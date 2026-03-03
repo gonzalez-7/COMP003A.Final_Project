@@ -30,6 +30,7 @@ namespace COMP003A.Final_Project
 						break;
 					case "2":
 						Console.WriteLine("\n--- View All Records ---");
+						ViewAllRecords(members);
 						break;
 					case "3":
 						Console.WriteLine("\n--- Search Records ---");
@@ -87,7 +88,7 @@ namespace COMP003A.Final_Project
 			int membershipTypeCode = ReadMembershipTypeCode();
 			int paymentPlanCode = ReadPaymentPlanCode();
 
-			double balanceDue = monthlyFee + registrationFeePaid;
+			double balanceDue = monthlyFee - registrationFeePaid;
 			if (balanceDue < 0)
 				balanceDue = 0;
 
@@ -130,6 +131,45 @@ namespace COMP003A.Final_Project
 			Console.WriteLine($"Risk Level: {newMember.DetermineHealthRisk()}");
 		}
 
+		static void ViewAllRecords(List<GymMember> members)
+		{
+			if (members.Count == 0)
+			{
+				Console.WriteLine("No records found.");
+				return;
+			}
+
+			foreach (GymMember member in members) {
+				Console.WriteLine("\n-----------------");
+				Console.WriteLine($"Member ID: {member.MemberId}");
+				Console.WriteLine($"Name: {member.FirstName} {member.LastName}");
+				Console.WriteLine($"Status: {member.MembershipStatus}");
+				Console.WriteLine($"Phone: {member.Phone}");
+				Console.WriteLine($"Email {member.Email}");
+				Console.WriteLine($"Address: {member.Address}");
+				Console.WriteLine($"Emergency Contact: {member.EmergencyContactName} - {member.EmergencyContactPhone}");
+				Console.WriteLine($"Emergency Adress: {member.EmergencyContactAddress}");
+				Console.WriteLine($"Age: {member.Age}");
+				Console.WriteLine($"Duration (months): {member.MembershipDurationMonths}");
+				Console.WriteLine($"Visits/Week: {member.VisitsPerWeek}");
+				Console.WriteLine($"Training Sessions/Month: {member.TrainingSessionsPerMonth}");
+				Console.WriteLine($"Height (cm): {member.HeightCm}");
+				Console.WriteLine($"Weight (km): {member.WeightKg}");
+				Console.WriteLine($"Registration Paid: {member.RegistrationFeePaid}");
+				Console.WriteLine($"Monthly Fee: {member.MonthlyFee}");
+				Console.WriteLine($"Balance Due: {member.BalanceDue}");
+				Console.WriteLine($"Has Trainer: {member.HasTrainer}");
+				Console.WriteLine($"Medical Condition: {member.HasMedicalCondition}");
+				Console.WriteLine($"Student: {member.IsStudent}");
+				Console.WriteLine($"AutoPay: {member.AutoPayEnabled}");
+				Console.WriteLine($"Membership Type Code: {member.MembershipTypeCode}");
+				Console.WriteLine($"Payment Plan Code: {member.PaymentPlanCode}");
+				Console.WriteLine($"Join Date: {member.JoinDate:d}");
+				Console.WriteLine($"Last Check-In: {member.LastCheckInDate}");
+				Console.WriteLine($"BMI: {member.CalculateBMI():F2}");
+				Console.WriteLine($"Risk Level: {member.DetermineHealthRisk}");
+		}
+
 		static string ReadString(string prompt)
 		{
 			while (true)
@@ -143,5 +183,6 @@ namespace COMP003A.Final_Project
 				Console.WriteLine("Input cannot be empty. Try Again. ");
 			}
 		}
+
 	}
 }
