@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace COMP003A.Final_Project
 {
@@ -56,7 +57,7 @@ namespace COMP003A.Final_Project
 			string memberId = "M" + (members.Count + 1).ToString("D4");
 
 			string membershipStatus = "Active";
-			bool isActice = true;
+			bool isActive = true;
 			DateTime joinDate = DateTime.Today;
 			DateTime lastCheckInDate = DateTime.Today;
 
@@ -75,7 +76,7 @@ namespace COMP003A.Final_Project
 			int age = ReadInt("Age: ", 12, 100);
 			int membershipDurationMonths = ReadInt("Membership Duration (months): ", 1, 36);
 			int visitsPerWeek = ReadInt("Visits Per Week: ", 0, 14);
-			int trainingSessionsPerMonth = ReadInt("Traininf Sessions Per Month: ", 0, 31);
+			int trainingSessionsPerMonth = ReadInt("Training Sessions Per Month: ", 0, 31);
 
 			double heightCm = ReadDouble("Height (cm): ", 50, 250);
 			double weightKg = ReadDouble("Weight (kg): ", 20, 300);
@@ -117,7 +118,7 @@ namespace COMP003A.Final_Project
 				balanceDue,
 				hasTrainer,
 				hasMedicalCondition,
-				isActice,
+				isActive,
 				isStudent,
 				autoPayEnabled,
 				membershipTypeCode,
@@ -267,7 +268,7 @@ namespace COMP003A.Final_Project
 				Console.WriteLine($"Name: {member.FirstName} {member.LastName}");
 				Console.WriteLine($"Status: {member.MembershipStatus}");
 				Console.WriteLine($"Phone: {member.Phone}");
-				Console.WriteLine($"Email {member.Email}");
+				Console.WriteLine($"Email: {member.Email}");
 				Console.WriteLine($"Address: {member.Address}");
 				Console.WriteLine($"Emergency Contact: {member.EmergencyContactName} - {member.EmergencyContactPhone}");
 				Console.WriteLine($"Emergency Address: {member.EmergencyContactAddress}");
@@ -287,7 +288,7 @@ namespace COMP003A.Final_Project
 				Console.WriteLine($"Membership Type Code: {member.MembershipTypeCode}");
 				Console.WriteLine($"Payment Plan Code: {member.PaymentPlanCode}");
 				Console.WriteLine($"Join Date: {member.JoinDate:d}");
-				Console.WriteLine($"Last Check-In: {member.LastCheckInDate}");
+				Console.WriteLine($"Last Check-In: {member.LastCheckInDate:d}");
 				Console.WriteLine($"BMI: {member.CalculateBMI():F2}");
 				Console.WriteLine($"Risk Level: {member.DetermineHealthRisk()}");
 			}
