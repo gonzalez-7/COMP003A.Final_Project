@@ -139,7 +139,8 @@ namespace COMP003A.Final_Project
 				return;
 			}
 
-			foreach (GymMember member in members) {
+			foreach (GymMember member in members)
+			{
 				Console.WriteLine("\n-----------------");
 				Console.WriteLine($"Member ID: {member.MemberId}");
 				Console.WriteLine($"Name: {member.FirstName} {member.LastName}");
@@ -168,6 +169,7 @@ namespace COMP003A.Final_Project
 				Console.WriteLine($"Last Check-In: {member.LastCheckInDate}");
 				Console.WriteLine($"BMI: {member.CalculateBMI():F2}");
 				Console.WriteLine($"Risk Level: {member.DetermineHealthRisk()}");
+			}
 		}
 
 		static string ReadString(string prompt)
@@ -183,6 +185,32 @@ namespace COMP003A.Final_Project
 				Console.WriteLine("Input cannot be empty. Try Again. ");
 			}
 		}
+
+		static int ReadInt(string prompt, int min, int max)
+		{
+			while (true)
+			{
+				Console.Write(prompt);
+				string input = Console.ReadLine();
+
+				try
+				{
+					int value = int.Parse(input);
+
+					if (value < min || value > max)
+					{
+						Console.WriteLine($"Enter a number between {min} and {max}.");
+						continue;
+					}
+					return value;
+				}
+				catch
+				{
+					Console.WriteLine("Invalid Number. Please enter a whole number.");
+				}
+			}
+		}
+
 
 	}
 }
