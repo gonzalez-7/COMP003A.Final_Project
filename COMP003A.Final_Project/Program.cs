@@ -148,13 +148,13 @@ namespace COMP003A.Final_Project
 				Console.WriteLine($"Email {member.Email}");
 				Console.WriteLine($"Address: {member.Address}");
 				Console.WriteLine($"Emergency Contact: {member.EmergencyContactName} - {member.EmergencyContactPhone}");
-				Console.WriteLine($"Emergency Adress: {member.EmergencyContactAddress}");
+				Console.WriteLine($"Emergency Address: {member.EmergencyContactAddress}");
 				Console.WriteLine($"Age: {member.Age}");
 				Console.WriteLine($"Duration (months): {member.MembershipDurationMonths}");
 				Console.WriteLine($"Visits/Week: {member.VisitsPerWeek}");
 				Console.WriteLine($"Training Sessions/Month: {member.TrainingSessionsPerMonth}");
 				Console.WriteLine($"Height (cm): {member.HeightCm}");
-				Console.WriteLine($"Weight (km): {member.WeightKg}");
+				Console.WriteLine($"Weight (kg): {member.WeightKg}");
 				Console.WriteLine($"Registration Paid: {member.RegistrationFeePaid}");
 				Console.WriteLine($"Monthly Fee: {member.MonthlyFee}");
 				Console.WriteLine($"Balance Due: {member.BalanceDue}");
@@ -167,7 +167,7 @@ namespace COMP003A.Final_Project
 				Console.WriteLine($"Join Date: {member.JoinDate:d}");
 				Console.WriteLine($"Last Check-In: {member.LastCheckInDate}");
 				Console.WriteLine($"BMI: {member.CalculateBMI():F2}");
-				Console.WriteLine($"Risk Level: {member.DetermineHealthRisk}");
+				Console.WriteLine($"Risk Level: {member.DetermineHealthRisk()}");
 		}
 
 		static string ReadString(string prompt)
