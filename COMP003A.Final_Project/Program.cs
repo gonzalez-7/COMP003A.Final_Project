@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace COMP003A.Final_Project
 {
@@ -34,6 +35,7 @@ namespace COMP003A.Final_Project
 						break;
 					case "3":
 						Console.WriteLine("\n--- Search Records ---");
+						SearchRecords(members);
 						break;
 					case "4":
 						Console.WriteLine("\n--- Summary Statistics ---");
@@ -129,6 +131,87 @@ namespace COMP003A.Final_Project
 			Console.WriteLine("\nMember added successfully!");
 			Console.WriteLine($"BMI: {newMember.CalculateBMI():F2}");
 			Console.WriteLine($"Risk Level: {newMember.DetermineHealthRisk()}");
+		}
+
+		static void SearchRecords(List<GymMember> members)
+		{
+			if (members.Count == 0)
+			{
+				Console.WriteLine("No records to search.");
+				return;
+			}
+
+			Console.WriteLine("Search by:");
+			Console.WriteLine("1. Member ID");
+			Console.WriteLine("2. Last Name");
+			Console.WriteLine("Choose 1-2: ");
+			string searchOption = Console.ReadLine();
+
+			string query = ReadString("Enter search value: ");
+			bool found = false;
+
+			foreach (GymMember member in members)
+			{
+				bool isMatch = false;
+
+				if (searchOption == "1")
+				{
+					if (member.MemberId.ToLower() == query.ToLower())
+						isMatch = true;
+				}
+				else if (searchOption == "2")
+				{
+					if (member.LastName.ToLower() == query.ToLower())
+						isMatch = true;
+				}
+				else
+				{
+					Console.WriteLine("Invalid search option");
+					return;
+				}
+				if (isMatch)
+				{
+					found = true;
+					Console.WriteLine("\n--- Match Found ---");
+					PrintMemberDetails(member);
+				}
+			}
+			if (!found)
+			{
+				Console.WriteLine("No matching records found.");
+			}
+		}
+
+		static void PrintMemberDetails(GymMember member)
+		{
+			Console.WriteLine("\n--------------");
+			Console.WriteLine($"Member ID: {member.MemberId}");
+			Console.WriteLine($"Name: {member.FirstName} {member.LastName}");
+			Console.WriteLine($"Status: {member.MembershipStatus}");
+			Console.WriteLine($"Phone: {member.Phone}");
+			Console.WriteLine($"Email: {member.Email}");
+			Console.WriteLine($"Address: {member.Address}");
+			Console.WriteLine($"Emergency Contact: {member.EmergencyContactName} - {member.EmergencyContactPhone}");
+			Console.WriteLine($"Emergency Address: {member.EmergencyContactAddress}");
+			Console.WriteLine($"Age: {member.Age}");
+			Console.WriteLine($"Duration (months): {member.MembershipDurationMonths}");
+			Console.WriteLine($"Visits/Week: {member.VisitsPerWeek}");
+			Console.WriteLine($"Training Sessions/Month: {member.TrainingSessionsPerMonth}");
+			Console.WriteLine($"Height (cm): {member.HeightCm}");
+			Console.WriteLine($"Weight (kg): {member.WeightKg}");
+			Console.WriteLine($"Registration Paid: {member.RegistrationFeePaid}");
+			Console.WriteLine($"Monthly Fee: {member.MonthlyFee}");
+			Console.WriteLine($"Balance Due: {member.BalanceDue}");
+			Console.WriteLine($"Has Trainer: {member.HasTrainer}");
+			Console.WriteLine($"Medical Condition: {member.HasMedicalCondition}");
+			Console.WriteLine($"Student: {member.IsStudent}");
+			Console.WriteLine($"AutoPay: {member.AutoPayEnabled}");
+			Console.WriteLine($"Membership Type Code: {member.MembershipTypeCode}");
+			Console.WriteLine($"Payment Plan Code: {member.PaymentPlanCode}");
+			Console.WriteLine($"Join Date: {member.JoinDate:d}");
+			Console.WriteLine($"Last Check-In: {member.LastCheckInDate:d}");
+			Console.WriteLine($"BMI: {member.CalculateBMI():F2}");
+			Console.WriteLine($"Risk Level: {member.DetermineHealthRisk()}");
 		}
 
 		static void ViewAllRecords(List<GymMember> members)
@@ -272,7 +355,7 @@ namespace COMP003A.Final_Project
 
 				switch (choice)
 				{
-					case "1"; return 1;
+					case "1": return 1;
 					case "2": return 2;
 					case "3": return 3;
 					default:
@@ -288,7 +371,7 @@ namespace COMP003A.Final_Project
 			Console.WriteLine("1. Monthly");
 			Console.WriteLine("2. Quarterly");
 			Console.WriteLine("3. Yearly");
-			Console.Write("Choose 1-3: ")
+			Console.Write("Choose 1-3: ");
 
 			while (true)
 			{
