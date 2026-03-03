@@ -27,5 +27,8 @@ namespace COMP003A.Final_Project
 		public bool HasMedicalCondition;
 		public bool IsActive;
 		public bool IsStudent;
+
+		public int MembershipTypeCode;
+		public int PaymentPlanCode;
 	}
 }
