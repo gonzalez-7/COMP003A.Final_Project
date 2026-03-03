@@ -39,6 +39,7 @@ namespace COMP003A.Final_Project
 						break;
 					case "4":
 						Console.WriteLine("\n--- Summary Statistics ---");
+						DisplaySummaryStatistics(members);
 						break;
 					case "5":
 						running = false;
@@ -131,6 +132,44 @@ namespace COMP003A.Final_Project
 			Console.WriteLine("\nMember added successfully!");
 			Console.WriteLine($"BMI: {newMember.CalculateBMI():F2}");
 			Console.WriteLine($"Risk Level: {newMember.DetermineHealthRisk()}");
+		}
+
+		static void DisplaySummaryStatistics(List<GymMember> members)
+		{
+			if (members.Count == 0)
+			{
+				Console.WriteLine("No records available for summary.");
+				return;
+			}
+
+			double totalMonthlyFees = 0;
+			double totalBalanceDue = 0;
+			int trainerCount = 0;
+			double highestMonthlyFee = members[0].MonthlyFee;
+			double lowestMonthlyFee = members[0].MonthlyFee;
+
+			foreach ( GymMember member in members )
+			{
+				totalMonthlyFees += member.MonthlyFee;
+				totalBalanceDue += member.BalanceDue;
+
+				if (member.HasTrainer)
+					trainerCount++;
+				if (member.MonthlyFee > highestMonthlyFee)
+					highestMonthlyFee = member.MonthlyFee;
+				if (member.MonthlyFee < lowestMonthlyFee)
+					lowestMonthlyFee= member.MonthlyFee;
+			}
+
+			double averageMonthlyFee = totalMonthlyFees / members.Count;
+			double trainerPercent = (trainerCount * 100.0) / members.Count;
+
+			Console.WriteLine($"\nTotal Members: {members.Count}");
+			Console.WriteLine($"Average Monthly Fee: {averageMonthlyFee}:[F2]");
+			Console.WriteLine($"Total Balance Due: {totalBalanceDue}:[F2]");
+			Console.WriteLine($"Members with Trainer: {trainerCount} ({trainerPercent:F1}%)");
+			Console.WriteLine($"Highest Monthly Fee: {highestMonthlyFee:F2}");
+			Console.WriteLine($"Lowest Monthly Fee: {lowestMonthlyFee:F2}");
 		}
 
 		static void SearchRecords(List<GymMember> members)
@@ -254,6 +293,8 @@ namespace COMP003A.Final_Project
 				Console.WriteLine($"Risk Level: {member.DetermineHealthRisk()}");
 			}
 		}
+
+
 
 		static string ReadString(string prompt)
 		{
