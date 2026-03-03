@@ -13,5 +13,14 @@ namespace COMP003A.Final_Project
 		public string Email;
 		public string Address;
 		public string EmergencyContactName;
+
+		public int Age;
+		public int MembershipDurationMonths;
+		public int VisitsPerWeek;
+		public int TrainingSessionsPerMonth;
+
+		public double HeightCm;
+		public double WeightKg;
+		public double MonthlyFee;
 	}
 }
