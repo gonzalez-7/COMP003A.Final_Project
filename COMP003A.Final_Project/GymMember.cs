@@ -110,5 +110,34 @@ namespace COMP003A.Final_Project
 			JoinDate = joinDate;
 			LastCheckInDate = lastCheckInDate;
 		}
+
+		public double CalculateBMI()
+		{
+			double heightMeters = HeightCm / 100.0;
+
+			if (heightMeters <= 0)
+
+				return 0;
+
+			return WeightKg / (heightMeters * heightMeters);
+		}
+
+		public string DetermineHealthRisk()
+		{
+			double bmi = CalculateBMI();
+
+			if (bmi >= 30 || (HasMedicalCondition && bmi >= 25))
+			{
+				return "High Risk";
+			}
+			else if (bmi >= 25 && bmi < 30)
+			{
+				return "Moderate Risk";
+			}
+			else
+			{
+				return "Low Risk";
+			}
+		}
 	}
 }
