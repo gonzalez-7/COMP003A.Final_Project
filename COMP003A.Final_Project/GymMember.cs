@@ -22,5 +22,10 @@ namespace COMP003A.Final_Project
 		public double HeightCm;
 		public double WeightKg;
 		public double MonthlyFee;
+
+		public bool HasTrainer;
+		public bool HasMedicalCondition;
+		public bool IsActive;
+		public bool IsStudent;
 	}
 }
