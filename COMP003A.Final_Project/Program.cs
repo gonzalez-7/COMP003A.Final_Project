@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace COMP003A.Final_Project
 {
@@ -19,7 +18,7 @@ namespace COMP003A.Final_Project
 				Console.WriteLine("3. Search Records");
 				Console.WriteLine("4. Display Summary Statistics");
 				Console.WriteLine("5. Exit");
-				Console.WriteLine("Choose an option from (1-5): ");
+				Console.Write("Choose an option from (1-5): ");
 
 				string choice = Console.ReadLine();
 
@@ -68,7 +67,7 @@ namespace COMP003A.Final_Project
 			string lastName = ReadString("Last Name: ");
 			string phone = ReadString("Phone: ");
 			string email = ReadString("Email: ");
-			string address = ReadString("Address");
+			string address = ReadString("Address: ");
 			string emergencyName = ReadString("Emergency Contact Name: ");
 			string emergencyPhone = ReadString("Emergency Contact Phone: ");
 			string emergencyAddress = ReadString("Emergency Contact Address: ");
@@ -165,8 +164,8 @@ namespace COMP003A.Final_Project
 			double trainerPercent = (trainerCount * 100.0) / members.Count;
 
 			Console.WriteLine($"\nTotal Members: {members.Count}");
-			Console.WriteLine($"Average Monthly Fee: {averageMonthlyFee}:[F2]");
-			Console.WriteLine($"Total Balance Due: {totalBalanceDue}:[F2]");
+			Console.WriteLine($"Average Monthly Fee: {averageMonthlyFee:F2}");
+			Console.WriteLine($"Total Balance Due: {totalBalanceDue:F2}");
 			Console.WriteLine($"Members with Trainer: {trainerCount} ({trainerPercent:F1}%)");
 			Console.WriteLine($"Highest Monthly Fee: {highestMonthlyFee:F2}");
 			Console.WriteLine($"Lowest Monthly Fee: {lowestMonthlyFee:F2}");
