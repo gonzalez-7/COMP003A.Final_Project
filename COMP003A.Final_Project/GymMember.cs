@@ -39,5 +39,76 @@ namespace COMP003A.Final_Project
 
 		public DateTime JoinDate;
 		public DateTime LastCheckInDate;
+
+		public GymMember(
+		string memberId,
+		string membershipStatus,
+		string firstName,
+		string lastName,
+		string phone,
+		string email,
+		string address,
+		string emergencyContactName,
+		string emergencyContactPhone,
+		string emergencyContactAddress,
+		int age,
+		int membershipDurationMonths,
+		int visitsPerWeek,
+		int trainingSessionsPerMonth,
+		double heightCm,
+		double weightKg,
+		double registrationFeePaid,
+		double monthlyFee,
+		double balanceDue,
+		bool hasTrainer,
+		bool hasMedicalCondition,
+		bool isActive,
+		bool isStudent,
+		bool autoPayEnabled,
+		int membershipTypeCode,
+		int paymentPlanCode,
+		DateTime joinDate,
+		DateTime lastCheckInDate
+		)
+		{
+			MemberId = memberId;
+			MembershipStatus = membershipStatus;
+			FirstName = firstName;
+			LastName = lastName;
+			Phone = phone;
+			Email = email;
+			Address = address;
+			EmergencyContactName = emergencyContactName;
+			EmergencyContactPhone = emergencyContactPhone;
+			EmergencyContactAddress = emergencyContactAddress;
+
+
+			Age = age;
+			MembershipDurationMonths = membershipDurationMonths;
+			VisitsPerWeek = visitsPerWeek;
+			TrainingSessionsPerMonth = trainingSessionsPerMonth;
+
+
+			HeightCm = heightCm;
+			WeightKg = weightKg;
+			RegistrationFeePaid = registrationFeePaid;
+			MonthlyFee = monthlyFee;
+			BalanceDue = balanceDue;
+
+
+			HasTrainer = hasTrainer;
+			HasMedicalCondition = hasMedicalCondition;
+			IsActive = isActive;
+			IsStudent = isStudent;
+			AutoPayEnabled = autoPayEnabled;
+
+
+			MembershipTypeCode = membershipTypeCode;
+			PaymentPlanCode = paymentPlanCode;
+
+
+			JoinDate = joinDate;
+			LastCheckInDate = lastCheckInDate;
+		}
 	}
 }
