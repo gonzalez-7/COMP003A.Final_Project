@@ -211,6 +211,99 @@ namespace COMP003A.Final_Project
 			}
 		}
 
+		static double ReadDouble(string prompt, double min, double max)
+		{
+			while (true)
+			{
+				Console.Write(prompt);
+				string input = Console.ReadLine();
 
+				try
+				{
+					double value = double.Parse(input);
+
+					if (value < min || value > max)
+					{
+						Console.WriteLine($"Enter a number between {min} and {max}.");
+						continue;
+					}
+					return value;
+				}
+				catch
+				{
+					Console.WriteLine("Invalid number. Please enter a numeric value.");
+				}
+			}
+		}
+
+		static bool ReadBool(string prompt)
+		{
+			while (true)
+			{
+				Console.Write(prompt);
+				string input = Console.ReadLine();
+
+				if (string.IsNullOrWhiteSpace(input))
+				{
+					Console.WriteLine("Please enter y or n.");
+					continue;
+				}
+
+				input = input.Trim().ToLower();
+
+				if (input == "y" || input == "yes") return true;
+				if (input == "n" || input == "no") return false;
+
+				Console.WriteLine("Invalid input. Enter y or n");
+			}
+		}
+
+		static int ReadMembershipTypeCode()
+		{
+			Console.WriteLine("\nMembership Type:");
+			Console.WriteLine("1. Basic");
+			Console.WriteLine("2. Standard");
+			Console.WriteLine("3. Premium");
+			Console.Write("Choose 1-3: ");
+
+			while (true)
+			{
+				string choice = Console.ReadLine();
+
+				switch (choice)
+				{
+					case "1"; return 1;
+					case "2": return 2;
+					case "3": return 3;
+					default:
+						Console.WriteLine("Invalid choice. Enter 1-3: ");
+						break;
+				}
+			}
+		}
+
+		static int ReadPaymentPlanCode()
+		{
+			Console.WriteLine("\nPayment Plan:");
+			Console.WriteLine("1. Monthly");
+			Console.WriteLine("2. Quarterly");
+			Console.WriteLine("3. Yearly");
+			Console.Write("Choose 1-3: ")
+
+			while (true)
+			{
+				string choice = Console.ReadLine();
+
+				switch (choice)
+				{
+					case "1": return 1;
+					case "2": return 2;
+					case "3": return 3;
+					default:
+						Console.WriteLine("Invalid choice enter 1-3: ");
+						break;
+				}
+			}
+		}
 	}
 }
